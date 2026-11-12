@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7e4eb"><title>For Neha, My Laila — Birthday Book</title>
+<style>
+:root{--rose:#b85f80;--deep:#704257;--ink:#59404c;--paper:#fffaf8;--pink:#f6e1e9}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at 15% 10%,#fff,#f8e5ec 55%,#eac9d7);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+body{padding:28px 12px 50px;overflow-x:hidden}
+.top{text-align:center;padding:14px 10px 22px}.top .mini{font:10px Arial,sans-serif;letter-spacing:.3em;color:#a56a82;text-transform:uppercase}
+.top h1{font-size:clamp(28px,6vw,44px);font-weight:400;color:#89516a;margin:10px 0}.top p{font:12px Arial,sans-serif;color:#936e7e}
+.book-shell{width:min(100%,760px);margin:0 auto;position:relative}
+.book{position:relative;min-height:610px;perspective:1800px;filter:drop-shadow(0 22px 30px #80526824)}
+.book-page{position:absolute;inset:0;min-height:610px;transform-origin:left center;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.2,.75,.2,1),z-index .85s;z-index:1}
+.book-page.flipped{transform:rotateY(-180deg);pointer-events:none}
+.paper{position:absolute;inset:0;background:linear-gradient(90deg,#ead5dc 0,#fffaf8 3%,#fffaf8 97%,#ead5dc 100%);border:1px solid #ead3dc;border-radius:8px 18px 18px 8px;padding:clamp(22px,5vw,48px);overflow:auto;backface-visibility:hidden}
+.paper:before{content:"";position:absolute;inset:13px;border:1px solid #f0dfe4;border-radius:4px;pointer-events:none}
+.page-content{position:relative;z-index:1;min-height:510px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.cover-page,.final-page{background:radial-gradient(circle at 50% 40%,#fff 0,#fff9fb 35%,#f4dce6 100%)}
+.tiny-label,.eyebrow{font:10px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#b1768d}
+.cover-heart,.final-heart{font-size:54px;color:#c16f90;margin:18px 0;animation:pulse 1.8s infinite}
+h1{font-size:clamp(42px,10vw,76px);font-weight:400;line-height:1;color:#89516a;margin:10px 0}h1 em{display:block;color:#c16f90;font-weight:400}
+h2{font-size:clamp(30px,7vw,48px);font-weight:400;color:#955a73;margin:14px 0 24px}
+.cover-sub{font-size:18px;color:#a65f7c;line-height:1.6}.cover-small{max-width:420px;line-height:1.8;color:#806274}
+.cover-rule{width:80px;height:1px;background:#cda2b2;margin:16px auto}.cover-flower{font-size:24px;letter-spacing:.25em;color:#c78aa2;margin-top:25px}
+.body-copy,.letter-copy{font-size:clamp(16px,3.2vw,19px);line-height:1.95;text-align:center;max-width:610px;color:#684c5b;margin:12px auto}
+.stamp,.date{border:1px solid #d9b1c0;color:#a65f7c;padding:10px 17px;border-radius:30px;font:11px Arial,sans-serif;letter-spacing:.14em;margin-top:20px}
+.photo-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:100%;align-items:center}
+.polaroid{margin:0;padding:9px 9px 17px;background:white;box-shadow:0 9px 24px #70425718;transform:rotate(-2deg);border:1px solid #f0e2e6}
+.polaroid:nth-child(2){transform:rotate(2deg) translateY(18px)}
+.polaroid img{display:block;width:100%;height:clamp(170px,30vw,300px);object-fit:cover}
+.polaroid figcaption{font-size:clamp(12px,2vw,15px);line-height:1.4;color:#86566b;padding:10px 2px 0}
+.small-note{font:11px Arial,sans-serif;color:#b07a90;margin-top:24px}
+.memory-video{width:min(100%,450px);max-height:390px;border-radius:14px;background:#21151b;box-shadow:0 12px 28px #70425720}
+.reasons{display:grid;grid-template-columns:1fr 1fr;gap:11px;width:100%;text-align:left}
+.reasons div{background:#fff1f5;border:1px solid #efd6df;border-radius:14px;padding:15px;font-size:14px;line-height:1.6}
+.letter-page{justify-content:flex-start;padding-top:18px}.letter-copy strong{color:#b65e7e}.signature{font-size:24px;font-style:italic;color:#b65f80;margin-top:14px}
+.controls{display:flex;align-items:center;justify-content:center;gap:18px;margin:24px auto 10px}
+.ctrl{border:1px solid #dcb8c6;background:#fff9fb;color:#9d5b76;border-radius:30px;padding:12px 20px;min-width:112px;box-shadow:0 6px 18px #80526812}
+.ctrl:disabled{opacity:.35}.page-count{font:11px Arial,sans-serif;color:#966b7d;min-width:55px;text-align:center}
+.hint{text-align:center;font:11px Arial,sans-serif;color:#9e7b8b;margin:8px}
+.music{position:fixed;right:14px;bottom:14px;z-index:20;border:1px solid #e7c9d5;background:#fffaf0ed;color:#985a75;border-radius:30px;padding:11px 15px;box-shadow:0 8px 28px #77455c1c;font:12px Arial,sans-serif}
+.float{position:fixed;z-index:30;pointer-events:none;animation:rise 3s ease-out forwards}@keyframes rise{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+@keyframes pulse{50%{transform:scale(1.15)}}
+@media(max-width:600px){body{padding:14px 8px 42px}.book,.book-page{min-height:570px}.paper{padding:23px 19px}.page-content{min-height:520px}.polaroid img{height:210px}.photo-pair{gap:9px}.reasons div{padding:12px;font-size:13px}.ctrl{min-width:90px;padding:11px 13px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header class="top"><div class="mini">a birthday keepsake made with love</div><h1>For my Laila ♡</h1><p>A little book of memories, words and wishes for Neha</p></header>
+<main class="book-shell">
+ <div class="book" id="book"><article class="book-page"><div class="paper"><div class="page-content cover-page">
+  <div class="tiny-label">a little book, made with all my love</div>
+  <div class="cover-heart">♡</div>
+  <h1>Happy Birthday <em>Neha</em></h1>
+  <p class="cover-sub">To my Laila, my favourite person.</p>
+  <div class="cover-rule"></div>
+  <p class="cover-small">A collection of moments, words, and all the love I wish I could give you in person.</p>
+  <div class="cover-flower">✿ ✧ ♡ ✧ ✿</div>
+</div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content">
+  <div class="eyebrow">chapter one · just for you</div><h2>Dear Laila…</h2>
+  <p class="body-copy">Aaj ka din tumhara hai, aur main chahta hoon ki tumhe yaad rahe ki tum kitni special ho. Kaash main aaj tumhare paas hota, tumhara haath pakadkar tumhe birthday wish karta aur tumhari smile saamne se dekhta.</p>
+  <p class="body-copy">Door hoon, lekin mera pyaar aur meri saari good wishes tumhare saath hain. Is chhoti si book ke har page mein tumhare liye thoda sa pyaar chhupa hai. ❤️</p>
+  <div class="stamp">FOR MY LAILA ♡</div>
+</div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content"><div class="eyebrow">little pieces of us</div><h2>Our memories</h2><div class="photo-pair"><figure class="polaroid"><img src="assets/memory-01.webp" alt="Our memory"><figcaption>Your smile, my favourite view.</figcaption></figure><figure class="polaroid"><img src="assets/memory-02.webp" alt="Our memory"><figcaption>Every little thing about you feels special.</figcaption></figure></div><p class="small-note">Turn the page slowly, my love ♡</p></div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content"><div class="eyebrow">little pieces of us</div><h2>Our memories</h2><div class="photo-pair"><figure class="polaroid"><img src="assets/memory-03.webp" alt="Our memory"><figcaption>My beautiful Laila, keep shining.</figcaption></figure><figure class="polaroid"><img src="assets/memory-04.webp" alt="Our memory"><figcaption>You make simple moments look magical.</figcaption></figure></div><p class="small-note">Turn the page slowly, my love ♡</p></div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content"><div class="eyebrow">little pieces of us</div><h2>Our memories</h2><div class="photo-pair"><figure class="polaroid"><img src="assets/memory-05.webp" alt="Our memory"><figcaption>That smile deserves its own sunshine.</figcaption></figure><figure class="polaroid"><img src="assets/memory-06.webp" alt="Our memory"><figcaption>You make the world feel softer.</figcaption></figure></div><p class="small-note">Turn the page slowly, my love ♡</p></div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content"><div class="eyebrow">little pieces of us</div><h2>Our memories</h2><div class="photo-pair"><figure class="polaroid"><img src="assets/memory-07.webp" alt="Our memory"><figcaption>I could look at this smile all day.</figcaption></figure><figure class="polaroid"><img src="assets/memory-08.webp" alt="Our memory"><figcaption>A little happiness, a lot of love.</figcaption></figure></div><p class="small-note">Turn the page slowly, my love ♡</p></div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content"><div class="eyebrow">little pieces of us</div><h2>Our memories</h2><div class="photo-pair"><figure class="polaroid"><img src="assets/memory-09.webp" alt="Our memory"><figcaption>My favourite place is next to you.</figcaption></figure><figure class="polaroid"><img src="assets/memory-10.webp" alt="Our memory"><figcaption>I wish I could hug you right now.</figcaption></figure></div><p class="small-note">Turn the page slowly, my love ♡</p></div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content"><div class="eyebrow">little pieces of us</div><h2>Our memories</h2><div class="photo-pair"><figure class="polaroid"><img src="assets/memory-11.webp" alt="Our memory"><figcaption>Some memories stay in the heart forever.</figcaption></figure><figure class="polaroid"><img src="assets/memory-12.webp" alt="Our memory"><figcaption>Hand in hand, heart to heart.</figcaption></figure></div><p class="small-note">Turn the page slowly, my love ♡</p></div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content"><div class="eyebrow">little pieces of us</div><h2>Our memories</h2><div class="photo-pair"><figure class="polaroid"><img src="assets/memory-13.webp" alt="Our memory"><figcaption>This is one of the moments I never want to forget.</figcaption></figure></div><p class="small-note">Turn the page slowly, my love ♡</p></div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content">
+  <div class="eyebrow">one more little memory</div><h2>My lovely Laila</h2>
+  <div class="photo-pair" style="grid-template-columns:minmax(0,1fr);max-width:420px"><figure class="polaroid"><img src="assets/memory-14.webp" alt="A lovely moment"><figcaption>A little sunshine, captured in one frame. ♡</figcaption></figure></div>
+  <p class="small-note">Another memory I’m keeping close to my heart ♡</p>
+</div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content">
+  <div class="eyebrow">a memory close to my heart</div><h2>One special day</h2>
+  <video class="memory-video" controls playsinline preload="metadata" poster="assets/memory-09.webp"><source src="assets/our-special-memory.mp4" type="video/mp4"></video>
+  <p class="body-copy center">Some moments don't need many words. I wish I could pause time and keep every beautiful memory with you a little longer.</p>
+</div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content">
+  <div class="eyebrow">six little reasons</div><h2>Why you're my favourite</h2>
+  <div class="reasons">
+   <div>🌷 Your smile makes ordinary days beautiful.</div>
+   <div>✨ You make simple moments feel magical.</div>
+   <div>🧸 Your little ways are my favourite.</div>
+   <div>💗 Even far away, you feel close to my heart.</div>
+   <div>🌙 I treasure every memory we make.</div>
+   <div>♾️ I want many more beautiful days with you.</div>
+  </div>
+</div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content letter-page">
+  <div class="eyebrow">the words i want you to keep</div><h2>For my Laila</h2>
+  <p class="letter-copy">Neha, <strong>tum meri sab kuch ho.</strong> Main tumse bahut pyaar karta hoon. ❤️</p>
+  <p class="letter-copy">Kaash aaj main tumhare paas hota, tumhara haath pakadkar tumhe birthday wish karta aur tumhari smile saamne se dekhta. Door hoon, lekin mera pyaar aur meri saari good wishes tumhare saath hain.</p>
+  <p class="letter-copy">Tumhare saath bani har yaad mere dil ke bahut kareeb hai. Main un khoobsurat palon ko kabhi nahi bhool sakta. Main chahta hoon ki hum aage bhi bahut saari pyaari memories banayein.</p>
+  <p class="letter-copy">Happy Birthday, meri Laila. Hamesha khush rehna, muskurati rehna. Tum mere liye bahut special ho.</p>
+  <div class="signature">Tumhara, hamesha ♡</div>
+</div></div></article>
+<article class="book-page"><div class="paper"><div class="page-content final-page">
+  <div class="final-heart">💗</div><div class="eyebrow">to our next chapters</div>
+  <h2>Our story is still being written…</h2>
+  <p class="body-copy center">12 December 2026 — our special anniversary. Here's to the memories behind us, the love between us, and all the moments still waiting for us.</p>
+  <div class="date">12 · 12 · 2026</div>
+  <p class="cover-sub">I love you, Laila. Always.</p>
+  <div class="cover-flower">♡ ✧ ♡</div>
+</div></div></article></div>
+ <div class="controls"><button class="ctrl" id="prev" onclick="turn(-1)">← Previous</button><span class="page-count" id="count">01 / 13</span><button class="ctrl" id="next" onclick="turn(1)">Next →</button></div>
+ <p class="hint">Use the buttons or swipe left and right to turn pages ♡</p>
+</main>
+<button class="music" id="musicBtn" onclick="toggleMusic()">♫ Play our song</button>
+<audio id="song" src="assets/our-song.mp3" preload="none" loop></audio>
+<script>
+const pages=[...document.querySelectorAll('.book-page')];let current=0;const song=document.getElementById('song');
+function update(){pages.forEach((p,i)=>{p.classList.toggle('flipped',i<current);p.style.zIndex=String(pages.length-i);});document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / '+String(pages.length).padStart(2,'0');document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===pages.length-1;}
+function turn(d){current=Math.max(0,Math.min(pages.length-1,current+d));update();sparkles();}
+function toggleMusic(){if(song.paused){song.play().then(()=>document.getElementById('musicBtn').textContent='Ⅱ Pause our song').catch(()=>document.getElementById('musicBtn').textContent='♫ Tap to play');}else{song.pause();document.getElementById('musicBtn').textContent='♫ Play our song';}}
+let x=0;document.getElementById('book').addEventListener('touchstart',e=>x=e.changedTouches[0].screenX,{passive:true});document.getElementById('book').addEventListener('touchend',e=>{let dx=e.changedTouches[0].screenX-x;if(Math.abs(dx)>45)turn(dx<0?1:-1);},{passive:true});
+function sparkles(){for(let i=0;i<9;i++){let e=document.createElement('span');e.className='float';e.textContent=['♡','💗','✦','🌸'][Math.floor(Math.random()*4)];e.style.left=Math.random()*100+'vw';e.style.bottom='0';e.style.fontSize=(15+Math.random()*18)+'px';document.body.appendChild(e);setTimeout(()=>e.remove(),3200);}}
+window.addEventListener('load',()=>{song.play().then(()=>document.getElementById('musicBtn').textContent='Ⅱ Pause our song').catch(()=>{});});update();
+</script></body></html>
